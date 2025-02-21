@@ -1,23 +1,36 @@
-'use strict';
-
 const fs = require('fs');
 const path = require('path');
-const Sequelize = require('sequelize');
-const process = require('process');
+const { Sequelize } = require('sequelize');
+require('dotenv').config(); // Carga variables de entorno
+
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+
+// 🔥 Usa config.js en lugar de config.json
+const config = require(__dirname + '/../config/config.js')[env]; 
+
 const db = {};
 
 let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  // 🔥 Asegura que Sequelize use las variables de entorno si están definidas
+  sequelize = new Sequelize(
+    process.env.DB_DATABASE || config.database,
+    process.env.DB_USERNAME || config.username,
+    process.env.DB_PASSWORD || config.password,
+    {
+      host: process.env.DB_HOST || config.host,
+      dialect: process.env.DB_DIALECT || config.dialect,
+      port: process.env.DB_PORT || config.port,
+      logging: false // Opcional: evita logs innecesarios en consola
+    }
+  );
 }
 
-fs
-  .readdirSync(__dirname)
+// 🔥 Carga todos los modelos de la carpeta actual
+fs.readdirSync(__dirname)
   .filter(file => {
     return (
       file.indexOf('.') !== 0 &&
@@ -41,3 +54,4 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+
