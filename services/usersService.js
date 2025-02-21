@@ -3,7 +3,7 @@ class UsersService{
     static async obtenerUser() {
            return await User.findAll();
   }
- /* static async obtenerUserPorCorreo(correo) {
+  static async obtenerUserPorCorreo(correo) {
         try {
             console.log("Buscando usuario con correo:", correo);
             const user = await User.findOne({ where: { correo } });
@@ -19,7 +19,7 @@ class UsersService{
             console.error(" Error al buscar usuario:", error);
             throw error;
         }
-    }*/
+    }
     static async crearUsarios(nombre,correo,contrasena) {
         return await User.create({ nombre, correo, contrasena });
     }
