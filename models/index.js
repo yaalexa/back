@@ -11,11 +11,12 @@ const config = {
   username: process.env.DB_USERNAME || "root",
   password: process.env.DB_PASSWORD || "JoATKoABJBbywoWYCTPluQRQBgpljbDA",
   database: process.env.DB_DATABASE || "railway",
-  host: process.env.DB_HOST || "localhost",
+  host: process.env.DB_HOST || "nozomi.proxy.rlwy.net",
   dialect: process.env.DB_DIALECT || "mysql",
-  port: process.env.DB_PORT || "3306",
+  port: process.env.DB_PORT || "50391",
   dialectModule: mysql2
 };
+
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
 
