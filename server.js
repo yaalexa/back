@@ -10,7 +10,7 @@ app.use(express.json());
 
 
 
-app.use("/api", (req, res) => {
+app.get("/api", (req, res) => {
   res.json({ msj: "aqui" });
 });
 
