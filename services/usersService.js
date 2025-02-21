@@ -1,4 +1,4 @@
-const { User } = require("../../models");
+const { User } = require("../models");
 class UsersService{
     static async obtenerUser() {
            return await User.findAll();
