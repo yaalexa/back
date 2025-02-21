@@ -17,7 +17,7 @@ app.use((err, req, res, next) => {
 // Rutas
 
 app.use("/api", (req, res) => {
-  console.log("aquiiii")
+  res.json({ msj: "aqui" });
 });
 
 
