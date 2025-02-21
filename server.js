@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-
+const usersRouter = require("./routers/usersRouter");
 dotenv.config();
 
 
@@ -10,7 +10,7 @@ app.use(express.json());
 
 
 // Rutas
-const usersRouter = require("./routers/usersRouter");
+
 app.use("/api", usersRouter);
 
 // Configuración del puerto
