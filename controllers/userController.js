@@ -20,8 +20,7 @@ class UserController {
         try {
                 const { nombre, correo, contrasena } = req.body;
                 const hashedPassword = await bcrypt.hash(contrasena, 10);
-                
-                const user = await UserService.crearUsuarios(nombre, correo, hashedPassword);
+                const user = await UserService.crearUsarios(nombre, correo, hashedPassword);
                 res.json(user);
             } catch (e) {
                 res.status(500).json({ error: "Error en la petición" });
