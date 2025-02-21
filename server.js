@@ -10,7 +10,7 @@ app.use(express.json());
 
 
 // Rutas
-const usersRouter = require("./app/routers/usersRouter");
+const usersRouter = require("./routers/usersRouter");
 app.use("/api", usersRouter);
 
 // Configuración del puerto
