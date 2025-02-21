@@ -5,18 +5,11 @@ class UsersService{
   }
   static async obtenerUserPorCorreo(correo) {
         try {
-            console.log("Buscando usuario con correo:", correo);
+            if (!correo) throw new Error("El correo es requerido");
             const user = await User.findOne({ where: { correo } });
-
-            if (!user) {
-                console.log(" Usuario no encontrado");
-                return null;
-            }
-
-            console.log(" Usuario encontrado:", user.toJSON()); // Convierte el usuario a JSON para evitar problemas de referencia circular
-            return user;
+            return user || null;
         } catch (error) {
-            console.error(" Error al buscar usuario:", error);
+            console.error("Error al buscar usuario:", error.message);
             throw error;
         }
     }
