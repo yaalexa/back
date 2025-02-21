@@ -3,7 +3,7 @@
      "username": "root",
     "password": "JoATKoABJBbywoWYCTPluQRQBgpljbDA",
     "database": "railway",
-    "dialect": "mysql2",
+    "dialect": "mysql",
     "host":"nozomi.proxy.rlwy.net",
     "port":50391
   },
