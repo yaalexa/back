@@ -3,7 +3,7 @@
      "username": "root",
     "password": "JoATKoABJBbywoWYCTPluQRQBgpljbDA",
     "database": "railway",
-    "dialect": "mysql",
+   
     "host":"nozomi.proxy.rlwy.net",
     "port":50391
   },
@@ -11,7 +11,7 @@
      "username": "root",
     "password": "JoATKoABJBbywoWYCTPluQRQBgpljbDA",
     "database": "railway",
-    "dialect": "mysql",
+  
     "host":"nozomi.proxy.rlwy.net",
     "port":50391
   },
@@ -19,7 +19,7 @@
     "username": "root",
     "password": "JoATKoABJBbywoWYCTPluQRQBgpljbDA",
     "database": "railway",
-    "dialect": "mysql",
+  
     "host":"nozomi.proxy.rlwy.net",
     "port":50391
   }
