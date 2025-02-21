@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-let UserController=require("../controllers/userController")
+let UserController=require("../../controllers/userController")
 // rutas user
 router.get('/user', UserController.obtenerUsuarios);
 router.post('/login', UserController.login);
