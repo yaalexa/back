@@ -1,4 +1,4 @@
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const UserService = require("../services/usersService");
 const SECRET_KEY = process.env.SECRET_KEY || "mi_secreto_super_seguro";
