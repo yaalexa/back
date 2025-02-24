@@ -38,7 +38,7 @@ class UserController {
         res.status(500).json({ error: "Error en la petición" });
     }
 } 
- 
+  
     static async register(req, res) {
         try{
             const { nombre, correo, contrasena } = req.body;
