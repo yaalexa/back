@@ -25,11 +25,11 @@ app.use(cors({
     credentials: true
 }));
 app.use(express.json());
-app.use(bodyParser.json());
+
 
 // Importar rutas
 
-app.use("/api", userRoutes);
+app.use("/api", usersRouter);
 
 // Middleware para manejar errores y evitar 500 en OPTIONS
 app.use((err, req, res, next) => {
