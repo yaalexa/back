@@ -7,25 +7,34 @@ const app = express();
 app.use(express.json());
 
 const cors = require("cors");
+const allowedOrigins = [
+    'http://localhost:5173',
+];
 
-app.use(
-  cors({
-    origin: "http://localhost:5173", // Permitir el frontend local
-    credentials: true, // Permite enviar cookies y encabezados de autenticación
-  })
-);
+// Configurar CORS
+app.use(cors({
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('CORS not allowed'));
+        }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+    credentials: true
+}));
+app.use(express.json());
+app.use(bodyParser.json());
 
-app.use("/api", usersRouter);
-app.use((req, res, next) => {
-    console.log(`📢 [${req.method}] ${req.url} - Body:`, req.body);
-    next();
-});
+// Importar rutas
 
+app.use("/api", userRoutes);
 
-// Middleware de manejo de errores global
+// Middleware para manejar errores y evitar 500 en OPTIONS
 app.use((err, req, res, next) => {
-    console.error("❌ Error en la solicitud:", err);
-    res.status(500).json({ error: "Error interno del servidor" });
+    console.error('Error:', err.message);
+    res.status(err.status || 500).json({ error: err.message || 'Error interno del servidor' });
 });
 
 // Configuración del puerto
