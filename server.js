@@ -16,6 +16,17 @@ app.use(
 );
 
 app.use("/api", usersRouter);
+app.use((req, res, next) => {
+    console.log(`📢 [${req.method}] ${req.url} - Body:`, req.body);
+    next();
+});
+
+
+// Middleware de manejo de errores global
+app.use((err, req, res, next) => {
+    console.error("❌ Error en la solicitud:", err);
+    res.status(500).json({ error: "Error interno del servidor" });
+});
 
 // Configuración del puerto
 const PORT = process.env.PORT ;
