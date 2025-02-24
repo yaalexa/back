@@ -1,17 +1,13 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const usersRouter = require("./routers/usersRouter");
-dotenv.config();
 
+dotenv.config();
 const app = express();
-app.use(express.json());
 
 const cors = require("cors");
-const allowedOrigins = [
-    'http://localhost:5173',
-];
+const allowedOrigins = ['http://localhost:5173'];
 
-// Configurar CORS
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
@@ -24,22 +20,13 @@ app.use(cors({
     allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true
 }));
-app.use(express.json());
 
-
-// Importar rutas
+app.use(express.json()); // 👈 Solo aquí
 
 app.use("/api", usersRouter);
 
-// Middleware para manejar errores y evitar 500 en OPTIONS
-app.use((err, req, res, next) => {
-    console.error('Error:', err.message);
-    res.status(err.status || 500).json({ error: err.message || 'Error interno del servidor' });
-});
-
-// Configuración del puerto
-const PORT = process.env.PORT ;
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
+    console.log(`✅ Servidor corriendo en el puerto ${PORT}`);
 });
 

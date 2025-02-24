@@ -15,7 +15,7 @@ const config = {
   dialect: process.env.DB_DIALECT || "mysql",
   port: process.env.DB_PORT || "50391",
   dialectModule: mysql2
-};
+};   
 
 
 const sequelize = new Sequelize(config.database, config.username, config.password, config);
