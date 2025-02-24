@@ -6,6 +6,14 @@ dotenv.config();
 const app = express();
 app.use(express.json());
 
+const cors = require("cors");
+
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Permitir el frontend local
+    credentials: true, // Permite enviar cookies y encabezados de autenticación
+  })
+);
 
 app.use("/api", usersRouter);
 
