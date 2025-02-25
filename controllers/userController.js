@@ -37,7 +37,7 @@ class UserController {
         console.error("Error en login:", e); 
         res.status(500).json({ error: "Error en la petición" });
     }
-} 
+}   
   
     static async register(req, res) {
         try{
