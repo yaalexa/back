@@ -1,17 +1,18 @@
 const express = require("express");
-const dotenv = require("dotenv");
-const usersRouter = require("./routers/usersRouter");
-dotenv.config();
-
 const app = express();
+const dotenv = require("dotenv");
+dotenv.config();
+const usersRouter=require('./app/routers/usersRouter')
+const cors = require("cors");
 app.use(express.json());
-
-
+app.use(cors());
+//ruta
 app.use("/api", usersRouter);
 
-// Configuración del puerto
-const PORT = process.env.PORT ;
+
+//configuracion puerto
+const PORT = process.env.PORT;
 app.listen(PORT, () => {
-    console.log(`Servidor corriendo en el puerto ${PORT}`);
-});
+    console.log("servidor corriendo");
+})
 
