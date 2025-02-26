@@ -42,8 +42,8 @@ class UserController {
     static async register(req, res) {
         try{
             const { nombre, correo, contrasena } = req.body;
-            //const hashedPassword = await bcrypt.hash(contrasena, 10);
-            const user = await UserService.crearUsarios(nombre, correo, contrasena);
+            const hashedPassword = await bcrypt.hash(contrasena, 10);
+            const user = await UserService.crearUsarios(nombre, correo, hashedPassword);
             console.log(req.body)
             res.json(user);
         } catch (e) {

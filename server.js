@@ -13,7 +13,6 @@ app.use(cors({
 //ruta
 app.use("/api", usersRouter);
 
-
 //configuracion puerto
 const PORT = process.env.PORT;
 app.listen(PORT, () => {
