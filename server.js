@@ -5,7 +5,11 @@ dotenv.config();
 const usersRouter=require('./routers/usersRouter')
 const cors = require("cors");
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+    origin: "*", // Permitir cualquier origen (ajustar en producción)
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"]
+}));
 //ruta
 app.use("/api", usersRouter);
 
