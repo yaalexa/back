@@ -13,7 +13,8 @@ class UsersService{
             throw error;
         }
     }
-    static async crearUsarios(nombre,correo,contrasena) {
+    static async crearUsarios(nombre, correo, contrasena) {
+        console.log(nombre, correo, contrasena);
         return await User.create({ nombre, correo, contrasena });
     }
   }
